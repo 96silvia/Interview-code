@@ -1,0 +1,47 @@
+<apex:page controller="CustomerInformationController" action="{!getData}">
+    <apex:form >
+    <table>
+        <tr>
+            <td>
+        <apex:dataTable value="{!customerDataList}" var="customer" id="theTable"
+        rowClasses="odd,even" styleClass="tableClass" border="2"  align="center" cellpadding="8">
+            <apex:column >
+                <apex:facet name="header">
+                <apex:inputCheckbox >
+                    <apex:actionSupport event="onclick"/>
+                </apex:inputCheckbox>
+                </apex:facet>
+            </apex:column>            
+             <apex:column value="{!customer.creditorName}" headerValue="Creditor"/>
+            <apex:column value="{!customer.firstName}" headerValue="First Name"/>
+            <apex:column >
+                <apex:facet name="header">Last Name</apex:facet>
+                <apex:outputText value="{!customer.lastName}"/>
+
+            </apex:column>
+            <apex:column >
+                <apex:facet name="header">Min Pay %</apex:facet>
+                <apex:outputText value="{!customer.minPaymentPercentage}"/>
+            </apex:column>
+            <apex:column >
+                <apex:facet name="header">Balance</apex:facet>
+                <apex:outputText value="{!customer.balance}"/>
+            </apex:column>
+    </apex:dataTable>
+            </td>    
+        </tr>
+
+    </table>
+    <table style = "width:24%;background-color:#03C6F4" >
+    <tr style ="background-color:#03C6F4" >
+        <td>
+        <p>Total</p>
+        </td>
+        <td align="Right"><apex:outputText value="{!finalTotal}"/></td>
+    </tr>    
+    </table>
+    
+            
+        <apex:outputText value="Check Row Count :{!size}"/>
+    </apex:form>   
+</apex:page>
